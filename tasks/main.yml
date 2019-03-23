@@ -1,0 +1,14 @@
+---
+ - name: installing "{{pkgname}}"
+   apt:
+     name: "{{pkgname}}"
+     state: "{{state1}}"
+   notify: restart "{{pkgname}}"
+   when: ansible_distribution== "Ubuntu"
+ - name: deployment
+   copy:
+     src: index.html
+     dest: "{{dest}}"
+   notify: restart "{{pkgname}}"
+
+     
